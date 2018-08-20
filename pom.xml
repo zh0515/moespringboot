@@ -4,7 +4,7 @@
     <name>openapi</name>
     <version>1.0.0</version>
     <artifactId>openapi</artifactId>
-    <groupId>cn.gov.gdcic</groupId>
+    <groupId>cn.gov.gdupi</groupId>
     <modelVersion>4.0.0</modelVersion>
 
     <parent>
