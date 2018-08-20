@@ -1,4 +1,4 @@
-package cn.gov.gdcic.controller;
+package cn.gov.gdupi.controller;
 
 import org.springframework.web.bind.annotation.RestController;
 import org.springframework.web.bind.annotation.RequestMapping;

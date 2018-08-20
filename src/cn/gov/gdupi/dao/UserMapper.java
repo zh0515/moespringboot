@@ -1,4 +1,4 @@
-package cn.gov.gdcic.dao;
+package cn.gov.gdupi.dao;
 
 public interface  UserMapper {
 
