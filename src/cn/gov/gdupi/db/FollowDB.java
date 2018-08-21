@@ -23,7 +23,7 @@ import javax.sql.DataSource;
 public class FollowDB {
 
     @Bean
-    @ConfigurationProperties(prefix="spring.datasource.follow")
+    @ConfigurationProperties(prefix="spring.datasource.followdb")
     public DataSource dataSource() {
         return new org.apache.tomcat.jdbc.pool.DataSource();
     }
