@@ -1,3 +1,5 @@
+create database gdupi;
+use gdupi;
 
 DROP TABLE IF EXISTS `user`;
 CREATE TABLE `user` (

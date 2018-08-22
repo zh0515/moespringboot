@@ -21,4 +21,11 @@ public class UserService {
         return user;
     }
 
+    public String logintoken() {
+        return "";
+    }
+
+    public String createUser(User user) {
+        return "";
+    }
 }

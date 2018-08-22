@@ -1,14 +1,16 @@
 package cn.gov.gdupi.controller;
 
-import org.springframework.web.bind.annotation.RestController;
 import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RestController;
 
 @RestController
+@RequestMapping("ping")
 public class HelloController {
-    
-    @RequestMapping("/")
+
+    @RequestMapping("")
     public String index() {
-        return "Greetings from Spring Boot!";
+        return "hello";
     }
-    
+
+
 }
