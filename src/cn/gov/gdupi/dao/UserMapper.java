@@ -3,7 +3,6 @@ package cn.gov.gdupi.dao;
 import cn.gov.gdupi.model.User;
 import org.apache.ibatis.annotations.*;
 import org.springframework.cache.annotation.CacheEvict;
-import org.springframework.cache.annotation.CachePut;
 import org.springframework.cache.annotation.Cacheable;
 
 /**
@@ -17,16 +16,21 @@ import org.springframework.cache.annotation.Cacheable;
  */
 
 public interface  UserMapper {
-    @Insert("insert into user(name,age) values(#{name},#{age})")
-    int addUser(@Param("name") String name, @Param("age") String age);
+    @Insert("insert into user(name,password) values(#{name},#{password})")
+    int addUser(@Param("name") String name, @Param("password") String password);
 
-    @Select("select * from user where id =#{id}")
-    @Cacheable(key = "#p0")
+    @Select("select id,name,role from user where id =#{id}")
+
+    @Cacheable(key = "id", value = "user")
     User findById(@Param("id") String id);
 
-    @CachePut(key = "#p0")
+    @Select("select id,name,password,role from user where name =#{name}")
+    @Cacheable(key = "'name'", value = "user")
+    User findByName(@Param("name") String name);
+
+    @Cacheable(key = "id", value = "user")
     @Update("update user set name=#{name} where id=#{id}")
-    void updataById(@Param("id") String id, @Param("name") String name);
+    void setnameById(@Param("id") String id, @Param("name") String name);
 
     //如果指定为 true，则方法调用后将立即清空所有缓存
     @CacheEvict(key = "#p0", allEntries = true)

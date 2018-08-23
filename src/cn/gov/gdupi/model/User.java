@@ -1,8 +1,9 @@
 package cn.gov.gdupi.model;
 
+import java.io.Serializable;
 import java.util.Date;
 
-public class User {
+public class User implements Serializable {
 
     Integer id;
     String name;

@@ -26,12 +26,12 @@ public class UserController {
 
         JSONObject reqbody = (JSONObject) JSON.parse(body);
         logger.info(reqbody);
-        String username = reqbody.getString("username");
+        String name = reqbody.getString("name");
         String password = reqbody.getString("password");
-        if (Strings.isEmpty(username) || Strings.isEmpty(password)) {
+        if (Strings.isEmpty(name) || Strings.isEmpty(password)) {
             return "username or password isEmpty";
         }
-        return userService.logintoken();
+        return userService.logintoken(name, password);
     }
 
 
