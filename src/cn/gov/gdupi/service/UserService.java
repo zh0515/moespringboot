@@ -2,6 +2,7 @@ package cn.gov.gdupi.service;
 
 import cn.gov.gdupi.dao.UserMapper;
 import cn.gov.gdupi.model.User;
+import cn.gov.gdupi.model.UserToken;
 import cn.gov.gdupi.util.MD5;
 import com.alibaba.fastjson.JSONObject;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -14,6 +15,9 @@ public class UserService {
 
     @Autowired
     private UserMapper userMapper;
+
+    @Autowired
+    TokenManager tokenManager;
 
     public User getUserInfo(){
         User user=userMapper.findUserInfo();
@@ -28,6 +32,8 @@ public class UserService {
 
         if (user.getPassword().equals(hashpwd)) {
             o.put("code", 0);
+            UserToken ut = tokenManager.createToken(user.getId());
+            o.put("token", ut);
             return o.toJSONString();
         } else {
             o.put("code", 1);

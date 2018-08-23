@@ -1,6 +1,7 @@
 package cn.gov.gdupi.service;
 
 import cn.gov.gdupi.model.UserToken;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Value;
 import org.springframework.data.redis.core.RedisTemplate;
 import org.springframework.stereotype.Component;
@@ -13,14 +14,15 @@ public class RedisTokenManager implements TokenManager {
     @Value("${token.expires}")
     Long TOKEN_EXPIRES_HOUR;
 
-    RedisTemplate redis;
+    @Autowired
+    RedisTemplate redisTemplate;
 
     public UserToken createToken(long userId) {
         //使用uuid作为源token
         String token = UUID.randomUUID().toString().replace("-", "");
         UserToken model = new UserToken(userId, token);
         //存储到redis并设置过期时间
-        redis.boundValueOps(userId).set(token, TOKEN_EXPIRES_HOUR, TimeUnit.HOURS);
+        redisTemplate.boundValueOps(userId).set(token, TOKEN_EXPIRES_HOUR, TimeUnit.HOURS);
         return model;
     }
 
@@ -42,17 +44,17 @@ public class RedisTokenManager implements TokenManager {
         if (model == null) {
             return false;
         }
-        Object token = redis.boundValueOps(model.getUserId()).get();
+        Object token = redisTemplate.boundValueOps(model.getUserId()).get();
 
         if (token == null || !token.equals(model.getToken())) {
             return false;
         }
         //如果验证成功，说明此用户进行了一次有效操作，延长token的过期时间
-        redis.boundValueOps(model.getUserId()).expire(TOKEN_EXPIRES_HOUR, TimeUnit.HOURS);
+        redisTemplate.boundValueOps(model.getUserId()).expire(TOKEN_EXPIRES_HOUR, TimeUnit.HOURS);
         return true;
     }
 
     public void deleteToken(long userId) {
-        redis.delete(userId);
+        redisTemplate.delete(userId);
     }
 }
