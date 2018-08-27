@@ -10,7 +10,7 @@ public class Role implements Serializable {
 
     Integer id;
     String name;
-    Date create_date;
+    Date create_time;
     String remarks;
     Boolean del_flag;
 }
