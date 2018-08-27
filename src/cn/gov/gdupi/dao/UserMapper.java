@@ -41,6 +41,6 @@ public interface  UserMapper {
     @Update("update user set del_tag='1' where id=#{id}")
     void deleteById(@Param("id") String id);
 
-    @Select("select id,name,role from user where name like %#{name}% ")
-    List<User> getUserlist();
+    @Select("select id,name,role from user where name like %#{name}% limit #{from},#{limit}")
+    List<User> getUserlist(@Param("name") String name, @Param("from") Integer from, @Param("limit") Integer limit);
 }

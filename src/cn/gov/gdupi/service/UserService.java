@@ -20,7 +20,7 @@ public class UserService {
     @Autowired
     TokenManager tokenManager;
 
-    public User getUserlist(String name, int from, int limit) {
+    public List<User> getUserlist(String name, int from, int limit) {
         List<User> user = userMapper.getUserlist(name, from, limit);
 
         return user;
