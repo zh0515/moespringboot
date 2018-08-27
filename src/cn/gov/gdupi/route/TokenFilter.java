@@ -19,7 +19,7 @@ import java.io.IOException;
 @Order(1)
 @Component
 @ServletComponentScan
-@WebFilter(urlPatterns = "/ping/*", filterName = "tokenFilter")
+@WebFilter(urlPatterns = {"/ping/*"}, filterName = "tokenFilter")
 public class TokenFilter implements Filter {
     static final Logger logger = LogManager.getLogger(TokenFilter.class);
 

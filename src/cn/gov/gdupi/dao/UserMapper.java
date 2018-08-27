@@ -1,9 +1,14 @@
 package cn.gov.gdupi.dao;
 
 import cn.gov.gdupi.model.User;
-import org.apache.ibatis.annotations.*;
+import org.apache.ibatis.annotations.Insert;
+import org.apache.ibatis.annotations.Param;
+import org.apache.ibatis.annotations.Select;
+import org.apache.ibatis.annotations.Update;
 import org.springframework.cache.annotation.CacheEvict;
 import org.springframework.cache.annotation.Cacheable;
+
+import java.util.List;
 
 /**
  * Created by zl on 2015/8/27.
@@ -20,7 +25,6 @@ public interface  UserMapper {
     int addUser(@Param("name") String name, @Param("password") String password);
 
     @Select("select id,name,role from user where id =#{id}")
-
     @Cacheable(key = "id", value = "user")
     User findById(@Param("id") String id);
 
@@ -34,8 +38,9 @@ public interface  UserMapper {
 
     //如果指定为 true，则方法调用后将立即清空所有缓存
     @CacheEvict(key = "#p0", allEntries = true)
-    @Delete("delete from user where id=#{id}")
+    @Update("update user set del_tag='1' where id=#{id}")
     void deleteById(@Param("id") String id);
 
-    User findUserInfo();
+    @Select("select id,name,role from user where name like %#{name}% ")
+    List<User> getUserlist();
 }

@@ -8,6 +8,7 @@ import com.alibaba.fastjson.JSONObject;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
+import java.util.List;
 
 
 @Service
@@ -19,9 +20,9 @@ public class UserService {
     @Autowired
     TokenManager tokenManager;
 
-    public User getUserInfo(){
-        User user=userMapper.findUserInfo();
-        //User user=null;
+    public User getUserlist(String name, int from, int limit) {
+        List<User> user = userMapper.getUserlist(name, from, limit);
+
         return user;
     }
 

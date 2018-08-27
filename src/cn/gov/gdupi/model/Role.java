@@ -1,8 +1,12 @@
 package cn.gov.gdupi.model;
 
+import lombok.Data;
+
+import java.io.Serializable;
 import java.util.Date;
 
-public class Role {
+@Data
+public class Role implements Serializable {
 
     Integer id;
     String name;
