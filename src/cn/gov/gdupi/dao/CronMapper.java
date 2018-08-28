@@ -9,7 +9,7 @@ import org.springframework.cache.annotation.Cacheable;
 
 @Mapper
 public interface CronMapper {
-    @Select("select id,name,cron,create_date,remarks,git,cmd from cron limit 1")
+    @Select("select id,name,cron,create_time,remarks,cron,dockerrepo,cmd from cron ")
     @Cacheable(key = "id", value = "cron")
     String getCron();
 

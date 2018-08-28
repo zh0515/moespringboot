@@ -4,6 +4,8 @@ import cn.gov.gdupi.model.User;
 import cn.gov.gdupi.service.UserService;
 import com.alibaba.fastjson.JSON;
 import com.alibaba.fastjson.JSONObject;
+import io.swagger.annotations.ApiImplicitParam;
+import io.swagger.annotations.ApiOperation;
 import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
 import org.apache.logging.log4j.util.Strings;
@@ -21,6 +23,8 @@ public class UserController {
     @Autowired
     UserService userService;
 
+    @ApiOperation(value = "登录", notes = "用户名密码登录")
+    @ApiImplicitParam(name = "login", value = "用户详细实体user", required = true, dataType = "cn.gov.gdupi.model.UserInfo")
     @RequestMapping(path = "/login", method = RequestMethod.POST)
     public String login(@RequestBody String body) {
 
@@ -34,7 +38,8 @@ public class UserController {
         return userService.logintoken(name, password);
     }
 
-
+    @ApiOperation(value = "创建新用户", notes = "创建新用户")
+    @ApiImplicitParam(name = "createuser", value = "用户详细实体user", required = true, dataType = "cn.gov.gdupi.model.UserInfo")
     @RequestMapping(path = "/", method = RequestMethod.POST)
     public String createuser(@RequestBody String body) {
         User user = JSON.parseObject(body, User.class);
