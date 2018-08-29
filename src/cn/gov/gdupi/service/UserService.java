@@ -44,7 +44,7 @@ public class UserService {
 
     public String createUser(User user) {
         String hashpwd = MD5.EncoderByMd5(user.getPassword());
-        int count = userMapper.addUser(user.getName(), hashpwd);
+        int count = userMapper.addUser(user.getName(), hashpwd, user.getRemarks());
         return "";
     }
 }

@@ -48,4 +48,18 @@ public class UserController {
         }
         return userService.createUser(user);
     }
+
+
+    @ApiOperation(value = "修改用户信息", notes = "修改用户信息")
+    @ApiImplicitParam(name = "updateuser", value = "用户详细实体user", required = true, dataType = "cn.gov.gdupi.model.UserInfo")
+    @RequestMapping(path = "/", method = RequestMethod.PUT)
+    public String updateuser(@RequestBody String body) {
+        User user = JSON.parseObject(body, User.class);
+        if (Strings.isEmpty(user.getName()) || Strings.isEmpty(user.getPassword())) {
+            return "username or password isEmpty";
+        }
+        return userService.createUser(user);
+    }
+
+
 }
