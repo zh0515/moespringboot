@@ -19,7 +19,7 @@ import javax.sql.DataSource;
 @ComponentScan(basePackageClasses = FollowDB.class)
 @EnableAutoConfiguration
 @ComponentScan
-@MapperScan("cn.gov.gdupi.dao")
+@MapperScan("cn.gov.gdupi.dao.read")
 public class FollowDB {
 
     @Bean
@@ -36,7 +36,7 @@ public class FollowDB {
 
         PathMatchingResourcePatternResolver resolver = new PathMatchingResourcePatternResolver();
 
-        sqlSessionFactoryBean.setMapperLocations(resolver.getResources("classpath:/mybatis/*.xml"));
+        sqlSessionFactoryBean.setMapperLocations(resolver.getResources("classpath:/mybatis/read/*.xml"));
 
         return sqlSessionFactoryBean.getObject();
     }

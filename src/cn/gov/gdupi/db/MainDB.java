@@ -19,7 +19,7 @@ import javax.sql.DataSource;
 @ComponentScan(basePackageClasses = MainDB.class)
 @EnableAutoConfiguration
 @ComponentScan
-@MapperScan("cn.gov.gdupi.dao")
+@MapperScan("cn.gov.gdupi.dao.write")
 public class MainDB {
 
     @Bean
@@ -36,7 +36,7 @@ public class MainDB {
 
         PathMatchingResourcePatternResolver resolver = new PathMatchingResourcePatternResolver();
 
-        sqlSessionFactoryBean.setMapperLocations(resolver.getResources("classpath:/mybatis/*.xml"));
+        sqlSessionFactoryBean.setMapperLocations(resolver.getResources("classpath:/mybatis/write/*.xml"));
 
         return sqlSessionFactoryBean.getObject();
     }
