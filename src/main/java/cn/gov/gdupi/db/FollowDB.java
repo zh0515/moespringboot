@@ -36,7 +36,7 @@ public class FollowDB {
 
         PathMatchingResourcePatternResolver resolver = new PathMatchingResourcePatternResolver();
 
-        sqlSessionFactoryBean.setMapperLocations(resolver.getResources("classpath:/mybatis/read/*.xml"));
+        sqlSessionFactoryBean.setMapperLocations(resolver.getResources("classpath*:/mybatis/read/*.xml"));
 
         return sqlSessionFactoryBean.getObject();
     }

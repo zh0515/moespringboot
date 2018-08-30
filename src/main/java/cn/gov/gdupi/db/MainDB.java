@@ -36,7 +36,7 @@ public class MainDB {
 
         PathMatchingResourcePatternResolver resolver = new PathMatchingResourcePatternResolver();
 
-        sqlSessionFactoryBean.setMapperLocations(resolver.getResources("classpath:/mybatis/write/*.xml"));
+        sqlSessionFactoryBean.setMapperLocations(resolver.getResources("classpath*:/mybatis/write/*.xml"));
 
         return sqlSessionFactoryBean.getObject();
     }
