@@ -1,13 +1,12 @@
 package cn.gov.gdupi.controller;
 
+import cn.gov.gdupi.model.Base;
 import cn.gov.gdupi.model.CommonResp;
 import cn.gov.gdupi.service.BaseService;
 import io.swagger.annotations.ApiOperation;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RequestMethod;
-import org.springframework.web.bind.annotation.RequestParam;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.beans.factory.annotation.Value;
+import org.springframework.web.bind.annotation.*;
 
 @RestController
 @RequestMapping("base")
@@ -15,9 +14,12 @@ public class BaseController {
     @Autowired
     BaseService baseService;
 
+    @Value("${limit}")
+    Integer searchlimit;
+
     @ApiOperation(value = "根基id或者name获取单条", notes = "")
     @RequestMapping(value = "", method = RequestMethod.GET)
-    public CommonResp get(@RequestParam String name, @RequestParam Integer id) {
+    public CommonResp get(@RequestParam(required = false) String name, @RequestParam(required = false) Integer id) {
         CommonResp resp = new CommonResp();
         if (name != null) {
             resp.setResult(baseService.getBaseByName(name));
@@ -31,10 +33,42 @@ public class BaseController {
     }
 
     @ApiOperation(value = "根据name搜索Base", notes = "")
-    @RequestMapping(value = "", method = RequestMethod.GET)
-    public CommonResp search(@RequestParam String name, @RequestParam Integer from, @RequestParam Integer limit) {
+    @RequestMapping(value = "search", method = RequestMethod.GET)
+    public CommonResp search(@RequestParam(required = false) String name, @RequestParam(required = false) Integer offset, @RequestParam(required = false) Integer limit) {
         CommonResp resp = new CommonResp();
-        resp.setResult(baseService.getBaselist(name, from, limit));
+
+        if (offset == null) {
+            offset = 0;
+        }
+        if (limit == null) {
+            limit = searchlimit;
+        }
+        resp.setResult(baseService.getBaselist(name, offset, limit));
+        return resp;
+    }
+
+    @ApiOperation(value = "根基id删除base", notes = "")
+    @RequestMapping(value = "search", method = RequestMethod.DELETE)
+    public CommonResp search(@RequestParam Integer id) {
+        CommonResp resp = new CommonResp();
+        resp.setResult(baseService.deleteBaseByID(id));
+        return resp;
+    }
+
+    @ApiOperation(value = "根基id更新base", notes = "")
+    @RequestMapping(value = "update", method = RequestMethod.PUT)
+    public CommonResp update(@RequestParam Integer id, @RequestBody Base base) {
+        CommonResp resp = new CommonResp();
+        resp.setResult(baseService.updateBaseByID(id, base.getName(), base.getRemarks()));
+        return resp;
+    }
+
+
+    @ApiOperation(value = "创建base", notes = "")
+    @RequestMapping(value = "insert", method = RequestMethod.POST)
+    public CommonResp insert(@RequestBody Base base) {
+        CommonResp resp = new CommonResp();
+        resp.setResult(baseService.addBase(base));
         return resp;
     }
 }

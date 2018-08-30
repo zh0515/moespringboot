@@ -36,4 +36,9 @@ public class BaseService {
         return count + "";
     }
 
+    public String addBase(Base base) {
+        int count = baseMapper.addBase(base.getName(), base.getRemarks());
+        return count + "";
+    }
+
 }

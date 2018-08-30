@@ -1,4 +1,5 @@
 lowercasename=$(echo ${1}| tr '[a-z]' '[A-Z]')
+echo ${lowercasename}
 echo will make file:src/cn/gov/gdupi/model/${1}.java
 cp src/cn/gov/gdupi/model/Base.java src/cn/gov/gdupi/model/${1}.java
 sed -i "s/Base/${1}/g" src/cn/gov/gdupi/model/${1}.java
