@@ -2,7 +2,7 @@
 <!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
 <mapper namespace="cn.gov.gdupi.dao.read.RRoleMapper">
 
-    <select id="getRolelist" resultType="main.java.cn.gov.gdupi.model.Role">
+    <select id="getRolelist" resultType="cn.gov.gdupi.model.Role">
         select id,name,create_time,remarks from role
         <where>
             del_flag='0'
