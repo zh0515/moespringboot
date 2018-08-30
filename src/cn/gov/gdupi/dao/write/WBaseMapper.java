@@ -5,7 +5,7 @@ import org.apache.ibatis.annotations.Param;
 import org.apache.ibatis.annotations.Update;
 import org.springframework.cache.annotation.CacheEvict;
 
-public interface BaseMapper {
+public interface WBaseMapper {
     @Insert("insert into base(name,create_time,remarks) values( #{name},now(),remarks  )")
     int addBase(@Param("name") String name, @Param("remarks") String remarks);
 

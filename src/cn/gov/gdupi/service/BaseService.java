@@ -1,6 +1,7 @@
 package cn.gov.gdupi.service;
 
 
+import cn.gov.gdupi.dao.write.WBaseMapper;
 import cn.gov.gdupi.model.Base;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
@@ -10,8 +11,8 @@ import java.util.List;
 @Service
 public class BaseService {
     @Autowired
-    cn.gov.gdupi.dao.read.BaseMapper rbaseMapper;
-    cn.gov.gdupi.dao.write.BaseMapper wbaseMapper;
+    cn.gov.gdupi.dao.read.RBaseMapper rbaseMapper;
+    WBaseMapper wbaseMapper;
 
     public Base getBaseByName(String name) {
         return rbaseMapper.findByName(name);

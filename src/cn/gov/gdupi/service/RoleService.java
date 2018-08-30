@@ -1,6 +1,7 @@
 package cn.gov.gdupi.service;
 
 
+import cn.gov.gdupi.dao.write.WRoleMapper;
 import cn.gov.gdupi.model.Role;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
@@ -10,8 +11,8 @@ import java.util.List;
 @Service
 public class RoleService {
     @Autowired
-    cn.gov.gdupi.dao.read.RoleMapper rroleMapper;
-    cn.gov.gdupi.dao.write.RoleMapper wroleMapper;
+    cn.gov.gdupi.dao.read.RRoleMapper rroleMapper;
+    WRoleMapper wroleMapper;
 
     public Role getRoleByName(String name) {
         return rroleMapper.findByName(name);

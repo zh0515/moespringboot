@@ -7,7 +7,7 @@ import org.springframework.cache.annotation.Cacheable;
 
 import java.util.List;
 
-public interface RoleMapper {
+public interface RRoleMapper {
 
     List<Role> getRolelist(@Param("name") String name, @Param("offset") Integer offset, @Param("limit") Integer limit);
 

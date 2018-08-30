@@ -5,7 +5,7 @@ import org.apache.ibatis.annotations.Param;
 import org.apache.ibatis.annotations.Update;
 import org.springframework.cache.annotation.CacheEvict;
 
-public interface RoleMapper {
+public interface WRoleMapper {
     @Insert("insert into role(name,create_time,remarks) values( #{name},now(),remarks  )")
     int addRole(@Param("name") String name, @Param("remarks") String remarks);
 

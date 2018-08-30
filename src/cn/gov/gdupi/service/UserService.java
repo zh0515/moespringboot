@@ -1,6 +1,7 @@
 package cn.gov.gdupi.service;
 
-import cn.gov.gdupi.dao.UserMapper;
+import cn.gov.gdupi.dao.read.RUserMapper;
+import cn.gov.gdupi.dao.write.WUserMapper;
 import cn.gov.gdupi.model.User;
 import cn.gov.gdupi.model.UserToken;
 import cn.gov.gdupi.util.MD5;
@@ -15,19 +16,20 @@ import java.util.List;
 public class UserService {
 
     @Autowired
-    private UserMapper userMapper;
+    private WUserMapper wuserMapper;
+    private RUserMapper ruserMapper;
 
     @Autowired
     TokenManager tokenManager;
 
     public List<User> getUserlist(String name, int from, int limit) {
-        List<User> user = userMapper.getUserlist(name, from, limit);
+        List<User> user = ruserMapper.getUserlist(name, from, limit);
 
         return user;
     }
 
     public String logintoken(String name, String pwd) {
-        User user = userMapper.findByName(name);
+        User user = ruserMapper.findByName(name);
         String hashpwd = MD5.EncoderByMd5(pwd);
         JSONObject o = new JSONObject();
 
@@ -44,7 +46,7 @@ public class UserService {
 
     public String createUser(User user) {
         String hashpwd = MD5.EncoderByMd5(user.getPassword());
-        int count = userMapper.addUser(user.getName(), hashpwd, user.getRemarks());
+        int count = wuserMapper.addUser(user.getName(), hashpwd, user.getRemarks());
         return "";
     }
 }

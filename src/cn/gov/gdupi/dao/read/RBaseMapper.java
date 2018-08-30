@@ -7,7 +7,7 @@ import org.springframework.cache.annotation.Cacheable;
 
 import java.util.List;
 
-public interface BaseMapper {
+public interface RBaseMapper {
 
     List<Base> getBaselist(@Param("name") String name, @Param("offset") Integer offset, @Param("limit") Integer limit);
 
