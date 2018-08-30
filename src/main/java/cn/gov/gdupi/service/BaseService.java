@@ -1,6 +1,7 @@
 package cn.gov.gdupi.service;
 
 
+import cn.gov.gdupi.dao.read.RBaseMapper;
 import cn.gov.gdupi.dao.write.WBaseMapper;
 import cn.gov.gdupi.model.Base;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -11,7 +12,7 @@ import java.util.List;
 @Service
 public class BaseService {
     @Autowired
-    cn.gov.gdupi.dao.read.RBaseMapper rbaseMapper;
+    RBaseMapper rbaseMapper;
 
     @Autowired
     WBaseMapper wbaseMapper;

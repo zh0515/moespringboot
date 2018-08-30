@@ -19,7 +19,7 @@ public class Swagger2 {
         return new Docket(DocumentationType.SWAGGER_2)
                 .apiInfo(apiInfo())
                 .select()
-                .apis(RequestHandlerSelectors.basePackage("cn.gov.gdupi"))
+                .apis(RequestHandlerSelectors.basePackage("cn.gov.cn.gov.gdupi"))
                 .paths(PathSelectors.any())
                 .build();
     }

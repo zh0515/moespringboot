@@ -24,7 +24,7 @@ public class UserController {
     UserService userService;
 
     @ApiOperation(value = "登录", notes = "用户名密码登录")
-    @ApiImplicitParam(name = "login", value = "用户详细实体user", required = true, dataType = "cn.gov.gdupi.model.UserInfo")
+    @ApiImplicitParam(name = "login", value = "用户详细实体user", required = true, dataType = "cn.gov.cn.gov.gdupi.model.UserInfo")
     @RequestMapping(path = "/login", method = RequestMethod.POST)
     public String login(@RequestBody String body) {
 
@@ -39,7 +39,7 @@ public class UserController {
     }
 
     @ApiOperation(value = "创建新用户", notes = "创建新用户")
-    @ApiImplicitParam(name = "createuser", value = "用户详细实体user", required = true, dataType = "cn.gov.gdupi.model.UserInfo")
+    @ApiImplicitParam(name = "createuser", value = "用户详细实体user", required = true, dataType = "cn.gov.cn.gov.gdupi.model.UserInfo")
     @RequestMapping(path = "/", method = RequestMethod.POST)
     public String createuser(@RequestBody String body) {
         User user = JSON.parseObject(body, User.class);
@@ -51,7 +51,7 @@ public class UserController {
 
 
     @ApiOperation(value = "修改用户信息", notes = "修改用户信息")
-    @ApiImplicitParam(name = "updateuser", value = "用户详细实体user", required = true, dataType = "cn.gov.gdupi.model.UserInfo")
+    @ApiImplicitParam(name = "updateuser", value = "用户详细实体user", required = true, dataType = "cn.gov.cn.gov.gdupi.model.UserInfo")
     @RequestMapping(path = "/", method = RequestMethod.PUT)
     public String updateuser(@RequestBody String body) {
         User user = JSON.parseObject(body, User.class);

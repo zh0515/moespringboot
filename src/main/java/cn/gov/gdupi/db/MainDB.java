@@ -16,14 +16,14 @@ import org.springframework.transaction.PlatformTransactionManager;
 import javax.sql.DataSource;
 
 @Configuration
-@ComponentScan(basePackageClasses = FollowDB.class)
+@ComponentScan(basePackageClasses = MainDB.class)
 @EnableAutoConfiguration
 @ComponentScan
-@MapperScan("cn.gov.gdupi.dao.read")
-public class FollowDB {
+@MapperScan("cn.gov.gdupi.dao.write")
+public class MainDB {
 
-    @Bean
-    @ConfigurationProperties(prefix="spring.datasource.followdb")
+    @Bean(name = "MainDBdatasource")
+    @ConfigurationProperties(prefix="spring.datasource.maindb")
     public DataSource dataSource() {
         return new org.apache.tomcat.jdbc.pool.DataSource();
     }
@@ -36,7 +36,7 @@ public class FollowDB {
 
         PathMatchingResourcePatternResolver resolver = new PathMatchingResourcePatternResolver();
 
-        sqlSessionFactoryBean.setMapperLocations(resolver.getResources("classpath:/mybatis/read/*.xml"));
+        sqlSessionFactoryBean.setMapperLocations(resolver.getResources("classpath:/mybatis/write/*.xml"));
 
         return sqlSessionFactoryBean.getObject();
     }
