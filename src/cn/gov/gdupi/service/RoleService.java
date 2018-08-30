@@ -12,6 +12,7 @@ import java.util.List;
 public class RoleService {
     @Autowired
     cn.gov.gdupi.dao.read.RRoleMapper rroleMapper;
+    @Autowired
     WRoleMapper wroleMapper;
 
     public Role getRoleByName(String name) {

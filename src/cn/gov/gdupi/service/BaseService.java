@@ -12,6 +12,8 @@ import java.util.List;
 public class BaseService {
     @Autowired
     cn.gov.gdupi.dao.read.RBaseMapper rbaseMapper;
+
+    @Autowired
     WBaseMapper wbaseMapper;
 
     public Base getBaseByName(String name) {

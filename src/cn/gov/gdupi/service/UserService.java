@@ -17,6 +17,7 @@ public class UserService {
 
     @Autowired
     private WUserMapper wuserMapper;
+    @Autowired
     private RUserMapper ruserMapper;
 
     @Autowired
