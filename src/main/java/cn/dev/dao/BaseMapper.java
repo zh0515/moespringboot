@@ -1,4 +1,4 @@
-package cn.dev.dao.read;
+package cn.dev.dao;
 
 import cn.dev.model.Base;
 import org.apache.ibatis.annotations.Param;
@@ -7,7 +7,7 @@ import org.springframework.cache.annotation.Cacheable;
 
 import java.util.List;
 
-public interface RBaseMapper {
+public interface BaseMapper {
 
     List<Base> getBaselist(@Param("name") String name, @Param("offset") Integer offset, @Param("limit") Integer limit);
 

@@ -19,7 +19,7 @@ import javax.sql.DataSource;
 @ComponentScan(basePackageClasses = MainDB.class)
 @EnableAutoConfiguration
 @ComponentScan
-@MapperScan("cn.gov.gdupi.dao.write")
+@MapperScan("cn.dev.dao")
 public class MainDB {
 
     @Bean(name = "MainDBdatasource")

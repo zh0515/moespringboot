@@ -1,7 +1,7 @@
 package cn.dev.service;
 
 
-import cn.dev.dao.read.RBaseMapper;
+import cn.dev.dao.BaseMapper;
 import cn.dev.dao.write.WBaseMapper;
 import cn.dev.model.Base;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -12,7 +12,7 @@ import java.util.List;
 @Service
 public class BaseService {
     @Autowired
-    RBaseMapper rbaseMapper;
+    BaseMapper rbaseMapper;
 
     @Autowired
     WBaseMapper wbaseMapper;
