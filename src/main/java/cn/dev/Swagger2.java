@@ -19,7 +19,7 @@ public class Swagger2 {
         return new Docket(DocumentationType.SWAGGER_2)
                 .apiInfo(apiInfo())
                 .select()
-                .apis(RequestHandlerSelectors.basePackage("cn.gov.cn.gov.gdupi"))
+                .apis(RequestHandlerSelectors.basePackage("cn.dev"))
                 .paths(PathSelectors.any())
                 .build();
     }
@@ -28,7 +28,6 @@ public class Swagger2 {
         return new ApiInfoBuilder()
                 .title("Spring Boot中使用Swagger2构建RESTful APIs")
                 .description("李鹏")
-
                 .contact("李鹏")
                 .version("1.0")
                 .build();
