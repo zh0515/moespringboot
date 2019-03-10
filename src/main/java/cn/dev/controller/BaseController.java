@@ -48,7 +48,7 @@ public class BaseController {
     }
 
     @ApiOperation(value = "根基id删除base", notes = "")
-    @RequestMapping(value = "search", method = RequestMethod.DELETE)
+    @RequestMapping(value = "", method = RequestMethod.DELETE)
     public CommonResp search(@RequestParam Integer id) {
         CommonResp resp = new CommonResp();
         resp.setResult(baseService.deleteBaseByID(id));
@@ -56,7 +56,7 @@ public class BaseController {
     }
 
     @ApiOperation(value = "根基id更新base", notes = "")
-    @RequestMapping(value = "update", method = RequestMethod.PUT)
+    @RequestMapping(value = "", method = RequestMethod.PUT)
     public CommonResp update(@RequestParam Integer id, @RequestBody Base base) {
         CommonResp resp = new CommonResp();
         resp.setResult(baseService.updateBaseByID(id, base.getName(), base.getRemarks()));
@@ -65,7 +65,7 @@ public class BaseController {
 
 
     @ApiOperation(value = "创建base", notes = "")
-    @RequestMapping(value = "insert", method = RequestMethod.POST)
+    @RequestMapping(value = "", method = RequestMethod.POST)
     public CommonResp insert(@RequestBody Base base) {
         CommonResp resp = new CommonResp();
         resp.setResult(baseService.addBase(base));
